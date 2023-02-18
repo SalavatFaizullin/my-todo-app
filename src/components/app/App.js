@@ -3,18 +3,12 @@ import './App.css';
 import Footer from '../footer';
 import NewTaskForm from '../new-task-form';
 import TaskList from '../task-list';
-import { formatDistanceToNow } from 'date-fns';
 
 export default class App extends Component {
   id = 100;
 
   state = {
-    todoData: [
-      this.createItem('Завтрак'),
-      this.createItem('Тренировка'),
-      this.createItem('Обед'),
-      this.createItem('Работа')
-    ],
+    todoData: [],
     filter: 'all'
   }
 
@@ -109,12 +103,6 @@ export default class App extends Component {
 
     const visibleItems = this.filter(todoData, filter)
 
-    const creationTime = formatDistanceToNow(
-      new Date(),
-      { includeSeconds: true },
-      { addSuffix: true }
-    )
-
     return (
       <section className="todoapp">
         <NewTaskForm
@@ -123,7 +111,6 @@ export default class App extends Component {
         <TaskList
           data={visibleItems}
           onDeleted={this.deleteItem}
-          creationTime={creationTime}
           onToggleCompleted={this.onToggleCompleted}
           onEditing={this.onEditing} />
         <Footer

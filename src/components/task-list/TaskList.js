@@ -1,8 +1,9 @@
 import React from 'react';
 import './TaskList.css';
 import Task from '../task';
+import PropTypes from 'prop-types';
 
-function TaskList({ data, onDeleted, onToggleCompleted, onEditing }) {
+export default function TaskList({ data, onDeleted, onToggleCompleted, onEditing }) {
     const tasks = data.map(item => {
         let classNames = ''
         if (item.completed) classNames += 'completed'
@@ -28,4 +29,16 @@ function TaskList({ data, onDeleted, onToggleCompleted, onEditing }) {
     )
 }
 
-export default TaskList;
+TaskList.defaultProps = {
+    data: [],
+    onDeleted: () => { },
+    onToggleCompleted: () => { },
+    onEditing: () => { }
+}
+
+TaskList.propTypes = {
+    data: PropTypes.array,
+    onDeleted: PropTypes.func,
+    onToggleCompleted: PropTypes.func,
+    onEditing: PropTypes.func
+}

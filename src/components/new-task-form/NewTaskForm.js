@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import './NewTaskForm.css';
+import PropTypes from 'prop-types';
 
 export default class NewTaskForm extends Component {
+    static defaultProps = {
+        onAdd: () => { }
+    }
+    static propTypes = {
+        onAdd: PropTypes.func
+    }
     state = {
         description: ''
     }
-
     onChange = (e) => {
         this.setState({
             description: e.target.value
         })
     }
-
     onSubmit = (e) => {
         e.preventDefault()
         this.props.onAdd(this.state.description)
@@ -19,7 +24,6 @@ export default class NewTaskForm extends Component {
             description: ''
         })
     }
-
     render() {
         return (
             <header className="header">
@@ -30,7 +34,7 @@ export default class NewTaskForm extends Component {
                         placeholder="What needs to be done?"
                         onChange={this.onChange}
                         value={this.state.description}
-                        autofocus />
+                        autoFocus />
                 </form>
             </header>
         )

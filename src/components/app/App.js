@@ -5,7 +5,7 @@ import NewTaskForm from '../new-task-form';
 import TaskList from '../task-list';
 
 export default class App extends Component {
-  id = 100;
+  id = 1;
 
   state = {
     todoData: [],

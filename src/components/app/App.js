@@ -16,7 +16,6 @@ export default class App extends Component {
     return {
       description: description,
       completed: false,
-      editing: false,
       created: new Date(),
       id: this.id++
     }
@@ -64,14 +63,6 @@ export default class App extends Component {
     })
   }
 
-  onEditing = (id) => {
-    this.setState(({ todoData }) => {
-      return {
-        todoData: this.toggleProperty(todoData, id, 'editing')
-      }
-    })
-  }
-
   filter(items, filter) {
     switch (filter) {
       case 'all':
@@ -111,8 +102,7 @@ export default class App extends Component {
         <TaskList
           data={visibleItems}
           onDeleted={this.deleteItem}
-          onToggleCompleted={this.onToggleCompleted}
-          onEditing={this.onEditing} />
+          onToggleCompleted={this.onToggleCompleted} />
         <Footer
           itemsLeft={todoData.filter(el => !el.completed).length}
           filter={filter}

@@ -11,7 +11,6 @@ export default class Task extends Component {
         onDeleted: () => { },
         creationTime: new Date(),
         onToggleCompleted: () => { },
-        onEditing: () => { },
         completed: false
     }
     static propTypes = {
@@ -19,11 +18,10 @@ export default class Task extends Component {
         onDeleted: PropTypes.func,
         creationTime: PropTypes.object,
         onToggleCompleted: PropTypes.func,
-        onEditing: PropTypes.func,
         completed: PropTypes.bool
     }
     render() {
-        const { description, onDeleted, creationTime, onToggleCompleted, onEditing, completed } = this.props
+        const { description, onDeleted, creationTime, onToggleCompleted, completed } = this.props
         const timeSinceCreation = formatDistanceToNow(
             creationTime,
             { includeSeconds: true },
@@ -41,10 +39,7 @@ export default class Task extends Component {
                         <span className="description">{description}</span>
                         <span className="created">created {timeSinceCreation} ago</span>
                     </label>
-                    <button
-                        className="icon icon-edit"
-                        onClick={onEditing}>
-                    </button>
+                    <button className="icon icon-edit"></button>
                     <button
                         className="icon icon-destroy"
                         onClick={onDeleted}>

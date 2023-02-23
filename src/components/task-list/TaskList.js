@@ -3,11 +3,10 @@ import './TaskList.css';
 import Task from '../task';
 import PropTypes from 'prop-types';
 
-export default function TaskList({ data, onDeleted, onToggleCompleted, onEditing }) {
+export default function TaskList({ data, onDeleted, onToggleCompleted }) {
     const tasks = data.map(item => {
         let classNames = ''
         if (item.completed) classNames += 'completed'
-        if (item.editing) classNames = 'editing'
         return (
             <li key={item.id} className={classNames}>
                 <Task
@@ -15,8 +14,7 @@ export default function TaskList({ data, onDeleted, onToggleCompleted, onEditing
                     description={item.description}
                     onDeleted={() => { onDeleted(item.id) }}
                     creationTime={item.created}
-                    onToggleCompleted={() => onToggleCompleted(item.id)}
-                    onEditing={() => onEditing(item.id)} />
+                    onToggleCompleted={() => onToggleCompleted(item.id)} />
             </li>
         )
     })
@@ -33,12 +31,10 @@ TaskList.defaultProps = {
     data: [],
     onDeleted: () => { },
     onToggleCompleted: () => { },
-    onEditing: () => { }
 }
 
 TaskList.propTypes = {
     data: PropTypes.array,
     onDeleted: PropTypes.func,
     onToggleCompleted: PropTypes.func,
-    onEditing: PropTypes.func
 }

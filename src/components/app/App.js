@@ -79,7 +79,7 @@ export default class App extends React.Component {
       }
     }
   }
-
+  
   render() {
     const { todoData, filter } = this.state
     const visibleItems = this.filter(todoData, filter)

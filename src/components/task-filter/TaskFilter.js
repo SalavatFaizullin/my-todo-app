@@ -3,16 +3,6 @@ import './TaskFilter.css'
 import PropTypes from 'prop-types'
 
 export default class TaskFilter extends Component {
-  static defaultProps = {
-    filter: 'default',
-    onFilterChange: () => {},
-  }
-
-  static propTypes = {
-    filter: PropTypes.string,
-    onFilterChange: PropTypes.func,
-  }
-
   buttons = [
     { name: 'all', label: 'All' },
     { name: 'active', label: 'Active' },
@@ -26,7 +16,7 @@ export default class TaskFilter extends Component {
       const classes = isActive ? 'selected' : ''
       return (
         <li key={name}>
-          <button className={classes} onClick={() => onFilterChange(name)}>
+          <button type="button" className={classes} onClick={() => onFilterChange(name)}>
             {label}
           </button>
         </li>
@@ -34,4 +24,12 @@ export default class TaskFilter extends Component {
     })
     return <ul className='filters'>{buttons}</ul>
   }
+}
+TaskFilter.defaultProps = {
+  filter: 'default',
+  onFilterChange: () => {},
+}
+TaskFilter.propTypes = {
+  filter: PropTypes.string,
+  onFilterChange: PropTypes.func,
 }

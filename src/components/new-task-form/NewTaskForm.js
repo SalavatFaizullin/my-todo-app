@@ -1,35 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewTaskForm.css'
 import PropTypes from 'prop-types'
 
-export default class NewTaskForm extends Component {
-  static defaultProps = {
-    onAdd: () => {},
-  }
-
-  static propTypes = {
-    onAdd: PropTypes.func,
-  }
-
-  state = {
-    description: '',
-  }
-
-  onChange = (e) => {
-    this.setState({
-      description: e.target.value,
-    })
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault()
-    this.props.onAdd(this.state.description)
-    this.setState({
+export default class NewTaskForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       description: '',
-    })
+    }
+    this.onChange = (e) => {
+      this.setState({
+        description: e.target.value,
+      })
+    }
+    this.onSubmit = (e) => {
+      e.preventDefault()
+      const { onAdd } = this.props
+      const { description } = this.state
+      onAdd(description)
+      this.setState({
+        description: '',
+      })
+    }
   }
 
   render() {
+    const { description } = this.state
     return (
       <header className='header'>
         <h1>todos</h1>
@@ -38,11 +34,18 @@ export default class NewTaskForm extends Component {
             className='new-todo'
             placeholder='What needs to be done?'
             onChange={this.onChange}
-            value={this.state.description}
-            autoFocus
+            value={description}
           />
         </form>
       </header>
     )
   }
+}
+
+NewTaskForm.defaultProps = {
+  onAdd: () => {},
+}
+
+NewTaskForm.propTypes = {
+  onAdd: PropTypes.func,
 }

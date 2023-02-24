@@ -36,7 +36,11 @@ TaskList.defaultProps = {
 }
 
 TaskList.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.string),
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      optionalProperty: PropTypes.string,
+    })
+  ),
   onDeleted: PropTypes.func,
   onToggleCompleted: PropTypes.func,
 }

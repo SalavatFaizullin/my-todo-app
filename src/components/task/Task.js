@@ -10,14 +10,14 @@ export default function Task({ description, onDeleted, creationTime, onToggleCom
       <div className='view'>
         <input className='toggle' type='checkbox' onClick={onToggleCompleted} defaultChecked={completed} />
         <label htmlFor='description'>
-          <span id='description' className='description'>{description}</span>
+          <span className='description'>{description}</span>
           <span className='created'>created {timeSinceCreation} ago</span>
         </label>
         <button type='button' className='icon icon-edit' aria-label='Edit task' />
         <button type='button' className='icon icon-destroy' aria-label='Delete task' onClick={onDeleted} />
       </div>
       <label htmlFor='edit'>
-        <input id="edit" type='text' className='edit' defaultValue={description} />
+        <input type='text' className='edit' defaultValue={description} />
       </label>
     </div>
   )

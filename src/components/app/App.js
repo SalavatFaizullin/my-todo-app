@@ -1,6 +1,6 @@
 import React from 'react'
-
 import './App.css'
+import nextId from 'react-id-generator'
 
 import Footer from '../footer'
 import NewTaskForm from '../new-task-form'
@@ -9,7 +9,6 @@ import TaskList from '../task-list'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.id = 1
     this.state = {
       todoData: [],
       filter: 'all',
@@ -75,11 +74,11 @@ export default class App extends React.Component {
         description,
         completed: false,
         created: new Date(),
-        id: this.id + 1,
+        id: nextId(),
       }
     }
   }
-  
+
   render() {
     const { todoData, filter } = this.state
     const visibleItems = this.filter(todoData, filter)

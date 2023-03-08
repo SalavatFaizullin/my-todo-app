@@ -12,7 +12,7 @@ export default function Task({ description, onDeleted, creationTime, onToggleCom
         <span className='description'>{description}</span>
         <span className='created'>created {timeSinceCreation} ago</span>
       </label>
-      <button type='button' className='icon icon-edit' aria-label='Edit task' />
+      {/* <button type='button' className='icon icon-edit' aria-label='Edit task' /> */}
       <button type='button' className='icon icon-destroy' aria-label='Delete task' onClick={onDeleted} />
     </div>
   )

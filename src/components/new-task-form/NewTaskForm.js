@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react'
 import './NewTaskForm.css'
 import PropTypes from 'prop-types'
@@ -53,7 +52,7 @@ export default class NewTaskForm extends React.Component {
     return (
       <header className='header'>
         <h1>todos los dias</h1>
-        <form className='new-todo-form' onKeyDown={(e) => this.onSubmit(e)}>
+        <form className='new-todo-form' role='presentation' onKeyDown={(e) => this.onSubmit(e)}>
           <input
             className='new-todo'
             placeholder='What needs to be done?'

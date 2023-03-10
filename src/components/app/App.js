@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react'
 import './App.css'
 import nextId from 'react-id-generator'
@@ -111,7 +110,7 @@ export default class App extends React.Component {
     setInterval(() => {
       this.setState(({ todoData }) => {
         const newArr = todoData.map((el) => {
-          if (el.isTimerRunning) el.seconds += 0.25
+          if (el.isTimerRunning) el.seconds += 1
           if (el.seconds === 59) {
             el.seconds = 0
             el.minutes += 1

@@ -28,6 +28,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "no-param-reassign": 0,
     "indent": [
       "error",
       2,

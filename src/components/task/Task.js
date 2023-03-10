@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react'
 import './Task.css'
 // import { formatDistanceToNow } from 'date-fns'
@@ -26,7 +25,7 @@ export default function Task({
           <button type='button' className='icon icon-play' aria-label='play' onClick={onTimerStart} />
           <button type='button' className='icon icon-pause' aria-label='pause' onClick={onTimerPause} />
           <span>
-            {minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds}&nbsp;
+            {minutes < 10 ? `0${  minutes}` : minutes}:{seconds < 10 ? `0${  seconds}` : seconds}&nbsp;
           </span>
         </span>
         {/* <span className='created'>created {timeSinceCreation} ago</span> */}

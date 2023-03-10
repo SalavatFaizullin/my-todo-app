@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import Task from '../task'
 
-export default function TaskList({ data, onDeleted, onToggleCompleted }) {
+export default function TaskList({ data, onDeleteItem, onToggleCompleted, onTimerPause, onTimerStart }) {
   const tasks = data.map((item) => {
     let classNames = ''
     if (item.completed) classNames += 'completed'
@@ -13,9 +13,13 @@ export default function TaskList({ data, onDeleted, onToggleCompleted }) {
         <Task
           completed={item.completed}
           description={item.description}
-          onDeleted={() => {
-            onDeleted(item.id)
+          minutes={item.minutes}
+          seconds={item.seconds}
+          onDeleteItem={() => {
+            onDeleteItem(item.id)
           }}
+          onTimerStart={()=> onTimerStart(item.id)}
+          onTimerPause={()=>onTimerPause(item.id)}
           creationTime={item.created}
           onToggleCompleted={() => onToggleCompleted(item.id)}
         />
@@ -31,7 +35,7 @@ export default function TaskList({ data, onDeleted, onToggleCompleted }) {
 
 TaskList.defaultProps = {
   data: [],
-  onDeleted: () => {},
+  onDeleteItem: () => {},
   onToggleCompleted: () => {},
 }
 
@@ -41,6 +45,6 @@ TaskList.propTypes = {
       optionalProperty: PropTypes.string,
     })
   ),
-  onDeleted: PropTypes.func,
+  onDeleteItem: PropTypes.func,
   onToggleCompleted: PropTypes.func,
 }

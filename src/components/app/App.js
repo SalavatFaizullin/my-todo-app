@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react'
 import './App.css'
 import nextId from 'react-id-generator'

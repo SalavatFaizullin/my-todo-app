@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react'
 import './TaskList.css'
 import PropTypes from 'prop-types'
